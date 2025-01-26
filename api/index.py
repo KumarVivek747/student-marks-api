@@ -12,8 +12,11 @@ with open('marks.json', 'r') as f:
 
 @app.route('/api', methods=['GET'])
 def get_marks():
+    print("API called")  # Debug log
     names = request.args.getlist('name')  # Get 'name' parameters from query
+    print(f"Names received: {names}")  # Debug log
     results = [entry['marks'] for entry in marks_data if entry['name'] in names]
+    print(f"Results: {results}")  # Debug log
     return jsonify({"marks": results})
 
 
